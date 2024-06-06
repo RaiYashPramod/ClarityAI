@@ -5,6 +5,8 @@ import { useState } from "react";
 import { toast } from "sonner";
 import axios from "axios";
 import { quantum } from 'ldrs'
+import { cn } from "@/lib/utils";
+import { DotPattern } from "./ui/dot-pattern"
 
 
 if (typeof window !== 'undefined') {
@@ -25,7 +27,7 @@ const ChatBox = () => {
     }
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:3000/conversation", {
+      const response = await axios.post("http://localhost:3030/conversation", {
         url: URL,
         query: query,
       });
@@ -47,10 +49,11 @@ const ChatBox = () => {
           placeholder="Paste the URL Here..."
           value={URL}
           onChange={(e) => setURL(e.target.value)}
+          className="shadow-lg border-2 border-zinc-300"
         />
 
         <ScrollArea
-          className="h-3/4 bg-slate-300 rounded-lg p-4 text-black border overflow-auto"
+          className="h-3/4 bg-white rounded-lg p-4 text-black border-2 overflow-auto shadow-lg border-zinc-300"
           type="text"
         >
           {chatHistory.length > 0 ? (
@@ -65,6 +68,16 @@ const ChatBox = () => {
           ) : (
             <p className="flex justify-center items-center">Start by pasting the URL...</p>
           )}
+          <DotPattern
+            width={20}
+            height={20}
+            cx={1}
+            cy={1}
+            cr={1}
+            className={cn(
+              "[mask-image:radial-gradient(30rem_at_center,white,transparent)]",
+            )}
+          />
         </ScrollArea>
 
         <div className="flex gap-2 pb-10">
@@ -73,13 +86,14 @@ const ChatBox = () => {
             placeholder="Ask a question..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            className="shadow-lg border-2 border-zinc-300"
           />
           {loading ? (
-            <Button className="w-1/6">
+            <Button className="w-1/6 shadow-lg">
               <l-quantum size="35" speed="1.75" color="white"></l-quantum>
             </Button>
           ) : (
-            <Button className="w-1/6" onClick={handleAsk}>
+            <Button className="w-1/6 shadow-lg" onClick={handleAsk}>
               Ask
             </Button>
           )}
