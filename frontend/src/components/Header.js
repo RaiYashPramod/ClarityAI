@@ -1,9 +1,8 @@
-import MaxWidthWrapper from "./MaxWidthWrapper";
 import { TypographyLarge } from "./ui/Typography";
 
 const Header = () => {
   return (
-    <MaxWidthWrapper className="flex flex-row items-center justify-between pt-20 md:px-0">
+    <section className="flex flex-row items-center justify-between w-full pt-20 md:px-0">
       <TypographyLarge className="text-red-400">Clarity AI</TypographyLarge>      
         <div className="flex flex-col items-start gap-y-1 xl:flex-row xl:items-center xl:gap-x-1 xl:w-fit">
           <TypographyLarge className="w-fit flex-nowrap whitespace-nowrap font-mono-regular">
@@ -17,13 +16,13 @@ const Header = () => {
             <TypographyLarge className="flex group-hover:-translate-y-5 group-hover:opacity-0 transition-all ease-in-out-circ duration-500">
               Rai Yash Pramod Anita
             </TypographyLarge>
-            <TypographyLarge className="absolute inset-0 group-hover:translate-y-0 translate-y-5 xl:translate-y-8 transition-all ease-in-out-circ duration-500 no-underline overflow-hidden flex-nowrap whitespace-nowrap">
+            <TypographyLarge className="absolute inset-0 group-hover:translate-y-0 translate-y-5 xl:translate-y-8 transition-all ease-in-out-circ duration-500 underline overflow-hidden flex-nowrap whitespace-nowrap">
               RaiYashPramodAnita:)
             </TypographyLarge>
           </a>
         </div>
       
-    </MaxWidthWrapper>
+    </section>
   );
 };
 
