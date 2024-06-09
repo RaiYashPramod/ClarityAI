@@ -11,12 +11,12 @@ const ChatForm = () => {
       <div className="flex flex-col items-center mx-10 md:mx-32 h-screen text-white">
         <div className="lg:py-5">
           <TypographyLarge className="">
-            Paste the <span className="text-red-400">URL</span> and ask any
+            Paste the <span className="text-indigo-500">URL</span> and ask any
             question related to that Page.
           </TypographyLarge>
         </div>
 
-        <div className="w-full h-full mb-20">
+        <div className="w-full h-full">
           <ChatBox />
         </div>
       </div>

@@ -6,25 +6,50 @@ import Link from "next/link";
 import mockup from "../../public/mockup.png";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { HoverEffect } from "@/components/ApplicationCard";
 
 export default function Home() {
+  const features = [
+    {
+      title: "Navigate Long Pages",
+      description: "Navigate through endless pages with Clarity AI.",
+      link: "http://localhost:3000/"
+    },
+    {
+      title: "Extract Relevant Information",
+      description: "Extract relevant information from documentations.",
+      link: "http://localhost:3000/"
+    },
+    {
+      title: "Summarize Long Documents",
+      description: "Summarize long documents for easier understanding.",
+      link: "http://localhost:3000/"
+    },
+    {
+      title: "Summarize New's Articles",
+      description: "Summarize news articles by just pasting the URL.",
+      link: "http://localhost:3000/"
+    }
+    
+  ]
   return (
-    <section className="relative text-white">
-      <div class="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_14px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
-      <div class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
+    <section className="relative text-slate-400">
+      <div class="absolute bottom-0 -z-10 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_14px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)]"></div>
+      <div class="absolute inset-0 -z-20 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_5%,#000_40%,#63e_100%)]"></div>
+      
       <MaxWidthWrapper className="">
         <Header />
         <div className="">
           <TypographyH1 className="py-20">
             {/* Having Difficulty to <span className="text-red-400">LOOK</span> for solution in Official Documentations? */}
-            Finding It <span className="text-red-400">Hard</span> to{" "}
-            <span className="text-red-400">Extract</span> Relevant Information{" "}
+            Finding It <span className="text-indigo-500">Hard</span> to{" "}
+            <span className="text-indigo-500">Extract</span> Relevant Information{" "}
             <br /> from Documentations?
           </TypographyH1>
         </div>
 
         <TypographyLarge className="px-10 text-2xl">
-          Introducing <span className="text-4xl text-red-400">Clarity AI</span>{" "}
+          Introducing <span className="text-4xl text-indigo-500">Clarity AI</span>{" "}
           to navigate through endless pages.
         </TypographyLarge>
 
@@ -54,8 +79,12 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="-mt-32 z-0">
+        {/* <div className="-mt-32 z-0">
           <Image src={mockup} alt="mockup" sizes="100rem" />
+        </div>       */}
+
+        <div className="">
+          <HoverEffect items={features} />
         </div>
       </MaxWidthWrapper>
     </section>

@@ -49,16 +49,16 @@ const ChatBox = () => {
           placeholder="Paste the URL Here..."
           value={URL}
           onChange={(e) => setURL(e.target.value)}
-          className="shadow-lg border-2 border-neutral-900 bg-neutral-700 rounded-md focus:outline-none "
+          className="shadow-lg border-2 border-neutral-900 bg-neutral-700 rounded-md focus:outline-none placeholder:text-white"
         />
 
         <ScrollArea
-          className="h-3/4 bg-neutral-950 rounded-lg p-4 text-white text-lg border-2 overflow-auto shadow-lg border-zinc-300 font-mono"
+          className="h-3/4 bg-neutral-950 rounded-lg p-4 text-white text-lg border-2 overflow-hidden shadow-lg border-zinc-300 font-mono"
           type="text"
         >
           {chatHistory.length > 0 ? (
             chatHistory.map((item, index) => (
-              <div key={index} className="flex flex-col gap-4">
+              <div key={index} className="flex flex-col gap-4 pb-4">
                 <div className="flex flex-row">
                   <p className="font-bold p-2">User:</p>
                   <p className="bg-neutral-700 p-2 rounded-xl">{item.query}</p>
@@ -90,14 +90,14 @@ const ChatBox = () => {
             placeholder="Ask a question..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="shadow-lg border-2 border-neutral-900 bg-neutral-700 text-white"
+            className="shadow-lg border-2 border-neutral-900 bg-neutral-700 text-white placeholder:text-white"
           />
           {loading ? (
             <Button className="w-1/6 shadow-lg">
               <l-quantum size="35" speed="1.75" color="white"></l-quantum>
             </Button>
           ) : (
-            <Button className="w-1/6 shadow-lg bg-red-400 " onClick={handleAsk}>
+            <Button className="w-1/6 shadow-lg bg-indigo-500" onClick={handleAsk}>
               Ask
             </Button>
           )}

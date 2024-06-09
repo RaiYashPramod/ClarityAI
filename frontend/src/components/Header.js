@@ -3,13 +3,13 @@ import { TypographyLarge } from "./ui/Typography";
 const Header = () => {
   return (
     <section className="flex flex-row items-center justify-between w-full pt-20 md:px-0">
-      <TypographyLarge className="text-red-400">Clarity AI</TypographyLarge>      
+      <TypographyLarge className="text-indigo-400">Clarity AI</TypographyLarge>      
         <div className="flex flex-col items-start gap-y-1 xl:flex-row xl:items-center xl:gap-x-1 xl:w-fit">
           <TypographyLarge className="w-fit flex-nowrap whitespace-nowrap font-mono-regular">
             Made by{" "}
           </TypographyLarge>
           <a
-            className="font-mono-bold relative overflow-y-hidden group h-fit text-red-400"
+            className="font-mono-bold relative overflow-y-hidden group h-fit text-indigo-400"
             target="_blank"
             href="https://www.linkedin.com/in/raiyashpramodanita"
           >
