@@ -7,15 +7,16 @@ import ChatBox from "./ChatBox";
 const ChatForm = () => {
   return (
     <>
-      <div className="flex flex-col items-center mx-10 md:mx-32 h-screen">
+      <div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
+      <div className="flex flex-col items-center mx-10 md:mx-32 h-screen text-white">
         <div className="lg:py-5">
-          <TypographyLarge className="bg-gray-50">
+          <TypographyLarge className="">
             Paste the <span className="text-red-400">URL</span> and ask any
             question related to that Page.
           </TypographyLarge>
         </div>
 
-        <div className="h-full w-full">
+        <div className="w-full h-full mb-20">
           <ChatBox />
         </div>
       </div>

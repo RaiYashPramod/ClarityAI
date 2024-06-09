@@ -10,5 +10,5 @@ export function TypographyH1({className, children}) {
 
 
 export function TypographyLarge({className, children}) {
-  return <div className={cn("text-lg font-semibold", className)}>{children}</div>
+  return <div className={cn("text-xl font-semibold", className)}>{children}</div>
 }

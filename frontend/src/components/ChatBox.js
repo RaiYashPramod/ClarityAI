@@ -43,26 +43,30 @@ const ChatBox = () => {
 
   return (
     <>
-      <div className="w-full flex flex-col h-full gap-4">
+      <div className="flex flex-col h-full gap-10">
         <Input
           type="text"
           placeholder="Paste the URL Here..."
           value={URL}
           onChange={(e) => setURL(e.target.value)}
-          className="shadow-lg border-2 border-zinc-300"
+          className="shadow-lg border-2 border-neutral-900 bg-neutral-700 rounded-md focus:outline-none "
         />
 
         <ScrollArea
-          className="h-3/4 bg-white rounded-lg p-4 text-black border-2 overflow-auto shadow-lg border-zinc-300"
+          className="h-3/4 bg-neutral-950 rounded-lg p-4 text-white text-lg border-2 overflow-auto shadow-lg border-zinc-300 font-mono"
           type="text"
         >
           {chatHistory.length > 0 ? (
             chatHistory.map((item, index) => (
-              <div key={index} className="mb-2">
-                <p className="font-bold">User:</p>
-                <p>{item.query}</p>
-                <p className="font-bold">AI:</p>
-                <p>{item.ai}</p>
+              <div key={index} className="flex flex-col gap-4">
+                <div className="flex flex-row">
+                  <p className="font-bold p-2">User:</p>
+                  <p className="bg-neutral-700 p-2 rounded-xl">{item.query}</p>
+                </div>
+                <div className="flex flex-row">
+                  <p className="font-bold p-2">AI:</p>
+                  <p className="bg-neutral-700 p-2 rounded-xl max-w-5xl">{item.ai}</p>
+                </div>
               </div>
             ))
           ) : (
@@ -80,20 +84,20 @@ const ChatBox = () => {
           />
         </ScrollArea>
 
-        <div className="flex gap-2 pb-10">
+        <div className="flex gap-6">
           <Input
             type="text"
             placeholder="Ask a question..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="shadow-lg border-2 border-zinc-300"
+            className="shadow-lg border-2 border-neutral-900 bg-neutral-700 text-white"
           />
           {loading ? (
             <Button className="w-1/6 shadow-lg">
               <l-quantum size="35" speed="1.75" color="white"></l-quantum>
             </Button>
           ) : (
-            <Button className="w-1/6 shadow-lg" onClick={handleAsk}>
+            <Button className="w-1/6 shadow-lg bg-red-400 " onClick={handleAsk}>
               Ask
             </Button>
           )}
