@@ -27,7 +27,8 @@ const ChatBox = () => {
     }
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:3030/conversation", {
+      
+      const response = await axios.post("http://localhost:3030/api/conversation", {
         url: URL,
         query: query,
       });
@@ -36,8 +37,19 @@ const ChatBox = () => {
       setLoading(false);
       setQuery("");
     } catch (error) {
-      console.log(error);
-      toast("Something went wrong. Please try again later.");
+      console.error(error);
+      if (error.response) {
+        // Server responded with a status other than 2xx
+        toast.error(`Error: ${error.response.data.error}`);
+      } else if (error.request) {
+        // No response received from the server
+        toast("No response from the server. Please try again later.");
+      } else {
+        // Something went wrong in setting up the request
+        toast.error("Something went wrong. Please try again later.");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 

@@ -1,8 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const puppeteer = require("puppeteer");
-const fs = require("fs");
-const path = require("path");
+const rateLimit = require('express-rate-limit')
 const cors = require("cors");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const sharp = require("sharp");
@@ -17,7 +16,14 @@ const generationConfig = {
   topK: 16,
 };
 
+const apiLimiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 10, // limit each IP to 100 requests per windowMs
+	message: 'Too many requests right now, please try again later.'
+})
+
 app.use(express.json());
+app.use('/api/', apiLimiter)
 
 app.use(
   cors({
@@ -66,10 +72,11 @@ const queryModel = async (query, image) => {
     return text;
   } catch (error) {
     console.error("Error querying model:", error);
+    throw new Error("Failed to query the model. Please try again later.");
   }
 };
 
-app.post("/conversation", async (req, res) => {
+app.post("/api/conversation", async (req, res) => {
   try {
     const { url, query } = req.body;
     if (!query) {
@@ -84,8 +91,14 @@ app.post("/conversation", async (req, res) => {
     const response = await queryModel(query, image);
     res.send({ response });
   } catch (error) {
-    console.error("Error processing query:", error);
-    res.status(500).send({ error: "Internal Server Error" });
+    if (error.message.includes("404")) {
+      return res.status(404).send({ error: "Failed to capture screenshot. The URL might be invalid." });
+    } else if (error.message.includes("Failed to query the model")) {
+      return res.status(500).send({ error: "Internal Server Error: Could not process the query." });
+    } else {
+      console.error("Unhandled error:", error);
+      res.status(500).send({ error: "Internal Server Error: An unexpected error occurred." });
+    }
   }
 });
 
