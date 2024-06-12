@@ -13,22 +13,22 @@ export default function Home() {
     {
       title: "Navigate Long Pages",
       description: "Navigate through endless pages with Clarity AI.",
-      link: "http://localhost:3000/",
+      link: "https://clarity-ai-black.vercel.app/",
     },
     {
       title: "Extract Relevant Information",
       description: "Extract relevant information from documentations.",
-      link: "http://localhost:3000/",
+      link: "https://clarity-ai-black.vercel.app/",
     },
     {
       title: "Summarize Long Documents",
       description: "Summarize long documents for easier understanding.",
-      link: "http://localhost:3000/",
+      link: "https://clarity-ai-black.vercel.app/",
     },
     {
       title: "Summarize New's Articles",
       description: "Summarize news articles by just pasting the URL.",
-      link: "http://localhost:3000/",
+      link: "https://clarity-ai-black.vercel.app/",
     },
   ];
   return (
@@ -39,7 +39,7 @@ export default function Home() {
       <MaxWidthWrapper className="">
         <Header />
 
-        <div className="flex flex-col justify-center items-center py-20">
+        <div className="flex flex-col justify-center items-center py-10 md:py-20">
           <Link href="https://github.com/RaiYashPramod/ClarityAI">
             <button className="bg-slate-800 no-underline group cursor-pointer relative shadow-2xl shadow-zinc-900 rounded-full p-px text-xs font-semibold leading-6  text-white inline-block">
               <span className="absolute inset-0 overflow-hidden rounded-full">

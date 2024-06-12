@@ -27,7 +27,7 @@ app.use('/api/', apiLimiter)
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://clarity-ai-black.vercel.app/",
   })
 );
 
