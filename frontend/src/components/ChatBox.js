@@ -28,7 +28,7 @@ const ChatBox = () => {
     setLoading(true);
     try {
       
-      const response = await axios.post("http://localhost:3030/api/conversation", {
+      const response = await axios.post("/api/conversation", {
         url: URL,
         query: query,
       });
@@ -39,13 +39,10 @@ const ChatBox = () => {
     } catch (error) {
       console.error(error);
       if (error.response) {
-        // Server responded with a status other than 2xx
         toast.error(`Error: ${error.response.data.error}`);
       } else if (error.request) {
-        // No response received from the server
         toast("No response from the server. Please try again later.");
       } else {
-        // Something went wrong in setting up the request
         toast.error("Something went wrong. Please try again later.");
       }
     } finally {
@@ -65,7 +62,7 @@ const ChatBox = () => {
         />
 
         <ScrollArea
-          className="h-3/4 bg-neutral-950 rounded-lg p-4 text-white text-lg border-2 overflow-hidden shadow-lg border-zinc-300 font-mono"
+          className="max-h-3/4 h-3/4 bg-neutral-950 rounded-lg p-4 text-white text-lg border-2 overflow-scroll shadow-lg border-zinc-300 font-mono"
           type="text"
         >
           {chatHistory.length > 0 ? (
