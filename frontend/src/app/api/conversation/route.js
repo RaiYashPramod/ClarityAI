@@ -20,12 +20,6 @@ const apiLimiter = rateLimit({
   message: 'Too many requests right now, please try again later.'
 });
 
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
-
 let chatHistory = [];
 
 const captureScreenShot = async (url) => {
